@@ -21,6 +21,13 @@ $dbname = "html_form_db";
 
 $sql="SELECT * FROM user_details WHERE ID='$id'";
 
+$res = mysql_query($sql);
+
+while ($result = mysql_fetch_array($res)) {
+    $details =$result['First name'];
+    echo "<br />";
+}
+
 if ($conn->query($sql) === TRUE) {
     
 } else {
@@ -29,5 +36,5 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("Location: /HTML_Form/htmlform.php?details=$sql");
+header("Location: /HTML_Form/htmlform.php?details=$details");
 ?>
