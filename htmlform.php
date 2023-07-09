@@ -10,7 +10,7 @@
     <body>
         <h1>Fill this form</h1>
 
-        <form class ="container" method="get">
+        <form action="/HTML_Form/includes/save_user.php" class ="container" method="POST">
             <!-- get user inputs--> 
             <div class="form-group">
                 <label for="fname">First Name</lable><br>
@@ -34,54 +34,17 @@
         
 
         <?php
-            $fname="";
-            $lname="";
-            $address="";
-            $id="";
+            if(isset($_GET['success'])){
+                $success = $_GET['success'];
 
-            if(isset($_GET["fname"])){
-                $fname = $_GET["fname"];
-                } 
-            
-            if(isset($_GET["lname"])){
-                $lname= $_GET["lname"];
-                } 
+                if($success){
+                    echo "Form submited successfully";
+                }
+                else{
+                    echo "Failed";
+                }
 
-            if(isset($_GET["address"])){
-                $address = $_GET["address"];
-                } 
-        
-            if(isset($_GET["id"])){
-                $id = $_GET["id"];
-                } 
-   
-
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname="html_form_db";
-            
-            // Create connection
-            $conn = new mysqli($servername, $username, $password,$dbname);
-
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-              }
-
-            //SQL query  
-            $sql = "INSERT INTO user_details (First_Name,Last_Name,address_,ID)
-                        VALUES ('$fname', '$lname','$address','$id')";
-            
-            
-            
-            if ($conn->query($sql) === TRUE) {
-             echo "<br>.New record created successfully";
-            } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
             }
-            
-            $conn->close();
         ?>
-        
     </body>
 </html>
