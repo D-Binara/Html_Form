@@ -8,7 +8,9 @@
     </head>
 
     <body>
-        <h1>Fill this form</h1>
+        <h1>Data Management System</h1>
+
+        <h2 class="container">Enter your details</h2>
 
         <form action="/HTML_Form/includes/save_user.php" class ="container" method="POST">
             <!-- get user inputs--> 
@@ -38,13 +40,37 @@
                 $success = $_GET['success'];
 
                 if($success){
-                    echo "Form submited successfully";
+                    echo "<div class=container><br>Form submited successfully</div>";
                 }
                 else{
-                    echo "Failed";
+                    echo "<div class=container><br>Failed</div>";
                 }
 
             }
+            if(isset($_GET['details'])){
+                $details = $_GET['details'];
+
+                if($details){
+                    echo "<div class=container><br>$details</div>";
+                }
+                else{
+                    echo "<div class=container><br>Enter correct ID</div>";
+                }
+            }
         ?>
+
+        <br>
+        <h2 class="container">Check your details</h2>
+
+        <form action="/HTML_Form/includes/get_user.php" class="container" method="post">
+            <div>
+                <label for="get_details">Enter ID</label><br>
+                <input type="text" id="get_details" name="get_details" placeholder="Enter your ID">
+            </div>
+            <div><br>
+                <input type="Submit" value="Submit">
+            </div>
+        </form>
+
     </body>
 </html>

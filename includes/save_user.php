@@ -20,7 +20,7 @@ if (isset($_POST["id"])) {
     $id = $_POST["id"];
 }
 
-
+//Serever details
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -45,7 +45,7 @@ try {
 
 
     if ($conn->query($sql) === TRUE) {
-        //TODO
+        
     } else {
         $status = false;
         $error = $conn->error;
