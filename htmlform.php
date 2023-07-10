@@ -47,30 +47,34 @@
                 }
 
             }
-            if(isset($_GET['details'])){
-                $details = $_GET['details'];
-
-                if($details){
-                    echo "<div class=container><br>$details</div>";
-                }
-                else{
-                    echo "<div class=container><br>Enter correct ID</div>";
-                }
-            }
+            
         ?>
 
         <br>
         <h2 class="container">Check your details</h2>
 
-        <form action="/HTML_Form/includes/get_user.php" class="container" method="post">
-            <div>
-                <label for="get_details">Enter ID</label><br>
-                <input type="text" id="get_details" name="get_details" placeholder="Enter your ID">
+        <form action="/HTML_Form/includes/get_user.php" class="container" method="POST">
+            <div class="form-group">
+                <label for="get_details">Enter ID</lable><br>
+                <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Enter your ID">
             </div>
             <div><br>
                 <input type="Submit" value="Submit">
             </div>
         </form>
+
+        <?php
+        if(isset($_GET['full_name'])){
+            $full_name = $_GET['full_name'];
+
+            if($full_name){
+                echo "<div class=container><br>$full_name</div>";
+            }
+            else{
+                echo "<div class=container><br>Enter correct ID</div>";
+            }
+        }
+        ?>
 
     </body>
 </html>

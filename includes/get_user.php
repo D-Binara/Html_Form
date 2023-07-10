@@ -2,8 +2,8 @@
 $id = "";
 
 
-if (isset($_POST["id"])) {
-    $id = $_POST["id"];
+if (isset($_POST["user_id"])) {
+    $id = $_POST["user_id"];
 }
 
 //Serever details
@@ -21,20 +21,20 @@ $dbname = "html_form_db";
 
 $sql="SELECT * FROM user_details WHERE ID='$id'";
 
-$res = mysql_query($sql);
+$result = $conn->query($sql);
 
-while ($result = mysql_fetch_array($res)) {
-    $details =$result['First name'];
-    echo "<br />";
-}
+$full_name = "";
 
-if ($conn->query($sql) === TRUE) {
-    
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $full_name = $row["First_Name"]. " " . $row["Last_Name"];
+    }
+
 } else {
-    echo $conn->error;
+    echo "0 records";
 }
 
 $conn->close();
 
-header("Location: /HTML_Form/htmlform.php?details=$details");
+header("Location: /HTML_Form/htmlform.php?full_name=$full_name");
 ?>
